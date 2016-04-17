@@ -7,7 +7,6 @@ var User = require('../../model/user.js');
 var servers = {
     index:function (req,res) {
         User.getAll(function (err,users) {
-            console.log(users+"dadadad")
             res.render('servers/users',{
                 title:'用户列表',
                 users:users,

@@ -11,7 +11,6 @@ var userSchema = new mongoose.Schema({
 },{
     collection:'users'
 });
-
 var userModel = mongoose.model('user',userSchema);
 function User(user){
     this.name = user.name;
@@ -44,7 +43,6 @@ User.getAll = function (callback) {
         if(err){
             return callback(err);
         }
-        console.log(users)
         callback(null,users)
 
     })
