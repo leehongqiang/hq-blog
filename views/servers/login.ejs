@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Dark Admin</title>
+    <link rel="stylesheet" type="text/css" href="../../darkadmin/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../darkadmin/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../darkadmin/css/local.css" />
+    <script type="text/javascript" src="../../darkadmin/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="../../darkadmin/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+<div id="page-wrapper">
+
+    <div class="row">
+        <div class="col-lg-12 text-center v-center">
+            <div><img src="../../images/logo.png" alt=""></div>
+            <br>
+            <br>
+            <br>
+            <form class="col-lg-12" method="post" action="/server/login">
+                <div class="input-group" style="width: 340px; text-align: center; margin: 10px auto;">
+                    <input class="form-control input-lg" title="Confidential signup." placeholder="请输入用户名" type="text" name="username" style="color: #00B7FF">
+                </div>
+                <div class="input-group" style="width: 340px; text-align: center; margin: 10px auto;">
+                    <input class="form-control input-lg" title="Confidential signup." placeholder="请输入密码" type="text" name="password" style="color: #00B7FF">
+                </div>
+                <% if(success) {%>
+                <div class="input-group" style="width: 340px; text-align: center; margin: 10px auto;">
+                    <label class="control-label" for="inputSuccess"><%= success %></label>
+                </div>
+                <%}%>
+                <% if(error) {%>
+                <div class="input-group has-warning" style="width: 340px;text-align: left; margin: 10px auto;">
+                    <label class="control-label" for="inputSuccess"><%= error %></label>
+                </div>
+                <%} %>
+                <% if(emptys) {%>
+                <div class="input-group has-warning" style="width: 340px;text-align: left; margin: 10px auto;">
+                    <label class="control-label" for="inputSuccess"><%= emptys %></label>
+                </div>
+                <%} %>
+                <div class="input-group " style="width: 340px; text-align: center; margin: 10px auto;">
+                    <input class="form-control input-lg btn-primary" title="Confidential signup." placeholder="Enter your email address" type="submit" value="登录">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

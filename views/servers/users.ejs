@@ -1,0 +1,128 @@
+<% include header%>
+
+<div id="wrapper">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+
+            <div style="margin-bottom: 20px">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">添加用户</button>
+                <form class="navbar-form navbar-right" role="search" action="/server/search" method="get">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search" name="searchname" style="color: #00B7FF" autofocus="autofocus">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-default form-control" value="搜索">
+                    </div>
+
+                </form>
+            </div>
+            <div class="table-responsive">
+
+                <% if(error) {%>
+                <div class="input-group has-warning" style="width: 340px;text-align: left; margin-bottom: 10px">
+                    <label class="control-label" for="inputSuccess"><%= error %></label>
+                </div>
+                <%} %>
+                <% if(success) {%>
+                <div class="input-group has-warning" style="width: 340px;text-align: left; margin-bottom: 10px">
+                    <label class="control-label" for="inputSuccess"><%= success %></label>
+                </div>
+                <%} %>
+                <!-- 添加用户-->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="exampleModalLabel">添加用户</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" action="/server/adduser">
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="control-label">用户名:</label>
+                                        <input type="text" class="form-control" id="recipient-name" name="username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="control-label">密码:</label>
+                                        <input type="password" class="form-control" id="recipient-name" name="password">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                        <button type="submit" class="btn btn-primary">添加</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- 修改密码-->
+                <div class="modal fade" id="updatepassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="exampleModalLabel">修改密码</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" action="/server/updateuser">
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="control-label">用户名:</label>
+                                        <input type="text" class="form-control username" name="username" readonly="readonly" style="color: #030303">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="control-label" >新密码:</label>
+                                        <input type="text" class="form-control password" name="password" style="color: #030303" placeholder="请输入新密码">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                        <button type="submit" class="btn btn-primary">修改</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr >
+                        <th>用户名</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% users.forEach(function (user,index) {%>
+                        <tr>
+                            <td class="col-sm-8"><%=user.name%></td>
+                            <td class="col-sm-4 text-center">
+                                <a class="btn bg-primary updatepassword" href="" role="button" data-toggle="modal" data-target="#updatepassword" data-name="<%=user.name%>" style="text-decoration: none;">修改密码</a>
+                                <a class="btn bg-danger" href="/server/remove/<%=user.name%>" role="button"style="text-decoration: none">删除</a>
+                            </td>
+                        </tr>
+                    <%})%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+        $('.updatepassword').click(function () {
+            var _user = $(this).attr("data-name");
+            var _pw = $(this).attr("data-pw");
+            $(function () {
+                $('#updatepassword').on('shown.bs.modal', function () {
+                    var modal = $(this)
+                    modal.find('.username').val(_user);
+                });
+            });
+        });
+
+
+
+
+</script>
+<% include footer%>
