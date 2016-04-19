@@ -1,9 +1,5 @@
-/**
- * Created by Administrator on 2016/4/15.
- */
-var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/hqblog');
+var mongoose = require('./db')
 
 var userSchema = new mongoose.Schema({
     name:String,
@@ -60,7 +56,8 @@ User.update = function (name,password,callback) {
     userModel.update({name:name},
         { $set: { password:password}},
         function (err,user) {
-            if(err){
+            if(err){y
+
                 return callback(err);
             }
         callback(null,user)

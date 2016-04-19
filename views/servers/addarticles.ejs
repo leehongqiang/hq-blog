@@ -1,0 +1,36 @@
+<% include header%>
+<ul class="nav navbar-nav side-nav">
+    <li><a href="/server"><i class="fa fa-bullseye"></i>用户管理</a></li>
+    <li class="selected"><a href="/article"><i class="fa fa-bullseye"></i>文章管理</a></li>
+</ul>
+<% include nav %>
+<div id="wrapper">
+    <div class="container">
+        <div class="row">
+            <% if(error) {%>
+            <div class="input-group has-warning" style="width: 340px;text-align: left; margin-bottom: 10px">
+                <label class="control-label" for="inputSuccess"><%= error %></label>
+            </div>
+            <%} %>
+            <div class="col-sm-12">
+                <form method="post" action="/addarticles">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">标题</label>
+                        <input type="text" class="form-control"  placeholder="请输入标题" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">标签</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="请输入标签" name="tag">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">文章类容</label>
+                        <textarea type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入内容" rows="30" name="content"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-default pull-right btn-primary">发表</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<% include footer%>

@@ -2,9 +2,10 @@
  * Created by Administrator on 2016/4/15.
  */
 var User = require('../../model/user.js');
-
+var Article = require('../../model/article.js')
 
 var servers = {
+    //首页
     index:function (req,res) {
         User.getAll(function (err,users) {
             res.render('servers/users',{
@@ -15,8 +16,8 @@ var servers = {
                 emptys:req.flash('emptys').toString()
             });
         });
-
     },
+    //登入登出
     getlogin: function (req,res) {
         res.render('servers/login',{
             title:'登录',
@@ -47,6 +48,11 @@ var servers = {
             res.redirect('/server');
         });
     },
+    logout: function (req,res) {
+        req.session.user = null;
+        res.redirect('/server/login');
+    },
+    //用户管理
     adduser: function (req,res) {
         var name = req.body.username,
             password = req.body.password
@@ -99,7 +105,7 @@ var servers = {
                 users: user,
                 success: req.flash('success').toString(),
                 error: req.flash('error').toString(),
-                });
+            });
         });
     },
     updateuser:function (req,res) {
@@ -124,10 +130,55 @@ var servers = {
             res.redirect('/server');
         })
     },
-    logout: function (req,res) {
-        req.session.user = null;
-        res.redirect('/server/login');
+    //文章管理
+    article: function (req,res) {
+        Article.getAll(function (err,articles) {
+            res.render('servers/articles',{
+                title:"文章",
+                articles:articles,
+                success:req.flash('success').toString(),
+                error:req.flash('error').toString(),
+            });
+        });
+
     },
+    addarticle: function (req,res) {
+        res.render('servers/addarticles',{
+            title:'发表文章',
+            success:req.flash('success').toString(),
+            error:req.flash('error').toString()
+        });
+    },
+    addarticles: function (req,res) {
+        var author = req.session.user.name,
+            title = req.body.title,
+            tag = req.body.tag,
+            content = req.body.content
+        var newArticle = new Article({
+            author:author,
+            title:title,
+            tag:tag,
+            content:content
+        });
+        newArticle.save(function (err) {
+            if(err){
+                req.flash('error',err);
+            }
+            req.flash('success','发布成功');
+            res.redirect('/article')
+        })
+
+    },
+    checkaticle: function (req,res) {
+
+    },
+    editaticle: function (req,res) {
+
+    },
+    removeaticle: function (req,res) {
+
+    },
+    //权限控制
     checkLogin: function (req,res,next) {
         if(!req.session.user){
             req.flash('error','未登录！');

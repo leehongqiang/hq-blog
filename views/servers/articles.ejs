@@ -1,0 +1,68 @@
+<% include header%>
+<ul class="nav navbar-nav side-nav">
+    <li><a href="/server"><i class="fa fa-bullseye"></i>用户管理</a></li>
+    <li class="selected"><a href="/article"><i class="fa fa-bullseye"></i>文章管理</a></li>
+</ul>
+<%
+    function getdate(date) {
+        return {
+            year: date.getFullYear(),
+            month: date.getFullYear() + "-" + (date.getMonth() + 1),
+            day: date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate(),
+            minute: date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() +
+            ":" + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes())
+        }
+    }
+%>
+<% include nav %>
+<div id="wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div style="margin-bottom: 20px">
+                    <a href="/addarticle" class="btn btn-primary">添加文章</a>
+                    <form class="navbar-form navbar-right" role="search" action="/server/search" method="get">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search" name="searchname" style="color: #00B7FF" autofocus="autofocus">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-default form-control" value="搜索">
+                        </div>
+                    </form>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr >
+                            <th>作者</th>
+                            <th>标题</th>
+                            <th>内容</th>
+                            <th>时间</th>
+                            <th>标签</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% articles.forEach(function (article,index) {%>
+                        <tr>
+                            <td class="col-sm-1"><%= article.author%></td>
+                            <td class="col-sm-3"><%= article.title%></td>
+                            <td class="col-sm-3"><p><%= article.content.substr(0,25)+'...'%></p></td>
+                            <td class="col-sm-2"><%= getdate(article.date).minute%></td>
+                            <td class="col-sm-1"><%= article.tag%></td>
+                            <td class="col-sm-2">
+                                <a href="/checkaticle" class="btn btn-primary">查看</a>
+                                <a href="/editaticle" class="btn btn-primary">编辑</a>
+                                <a href="/removeaticle" class="btn btn-primary">删除</a>
+                            </td>
+                        </tr>
+                        <%})%>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include footer%>
