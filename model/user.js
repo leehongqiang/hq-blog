@@ -56,8 +56,7 @@ User.update = function (name,password,callback) {
     userModel.update({name:name},
         { $set: { password:password}},
         function (err,user) {
-            if(err){y
-
+            if(err){
                 return callback(err);
             }
         callback(null,user)

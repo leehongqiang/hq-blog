@@ -48,7 +48,46 @@ Article.prototype.save = function(callback){
         callback(null);
     });
 }
-
+Article.getOne = function (id,callback) {
+    var articleOne = {
+        _id:id
+        //author:author,
+        //title:title,
+        //date:date
+    }
+    articleModel.findById(articleOne, function (err,article) {
+        if(err){
+            return callback(err);
+        }
+        callback(null,article);
+    })
+}
+Article.edit = function (id,title,content,callback) {
+    articleModel.update({_id:id},{
+        $set:{title:title,content:content}
+    }, function (err,article) {
+        if(err){
+            return callback(err);
+        }
+        callback(null,article);
+    });
+}
+Article.remove = function (id,callback) {
+    articleModel.remove({_id:id}, function (err) {
+        if(err){
+            return callback (err);
+        }
+        callback(null);
+    })
+}
+Article.search = function (title,callback) {
+    articleModel.find({title:title}, function (err,articles) {
+        if(err){
+            return callback(err);
+        }
+        callback(null,articles);
+    });
+}
 Article.getAll = function (callback) {
     articleModel.find({}, function (err,articles) {
         if(err){

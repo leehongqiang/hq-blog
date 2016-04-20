@@ -142,6 +142,21 @@ var servers = {
         });
 
     },
+    articlesearch: function (req,res) {
+        var title = req.query.searchname;
+        Article.search(title, function (err,articles) {
+            if(err){
+                req.flash('error',err);
+            }
+            req.flash('success','OK');
+            res.render('servers/seaarticles',{
+                title:'查找文章',
+                articles:articles,
+                success:req.flash('success').toString(),
+                error:req.flash('error').toString()
+            });
+        })
+    },
     addarticle: function (req,res) {
         res.render('servers/addarticles',{
             title:'发表文章',
@@ -170,13 +185,58 @@ var servers = {
 
     },
     checkaticle: function (req,res) {
-
+        var id= req.params.id
+            //title = req.params.title,
+            //date = req.params.date
+        Article.getOne(id, function (err,article) {
+            if(err){
+                req.flash('error',err);
+            }
+            req.flash('success','查询成功');
+            res.render('servers/checkaddarticles',{
+                title:'查看文章',
+                article:article,
+                success:req.flash('success').toString(),
+                error:req.flash('error').toString(),
+            });
+        });
     },
-    editaticle: function (req,res) {
-
+    posteditaticle: function (req,res) {
+        var id = req.params.id,
+            title = req.body.title,
+            content = req.body.content;
+        Article.edit(id,title,content, function (err) {
+            if(err){
+                req.flash('error',err);
+            }
+            req.flash('success','修改成功');
+            res.redirect('/article');
+        })
+    },
+    geteditaticle: function (req,res) {
+        var id = req.params.id
+        Article.getOne(id, function (err,article) {
+            if(err){
+                req.flash('error',err);
+            }
+            req.flash('success','查询成功');
+            res.render('servers/editarticles',{
+                title:'查看文章',
+                article:article,
+                success:req.flash('success').toString(),
+                error:req.flash('error').toString(),
+            });
+        });
     },
     removeaticle: function (req,res) {
-
+        var id= req.params.id;
+        Article.remove(id, function (err) {
+            if(err){
+                req.flash('error',err);
+            }
+            req.flash('success','删除成功');
+            res.redirect('/article');
+        });
     },
     //权限控制
     checkLogin: function (req,res,next) {

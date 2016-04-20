@@ -6,11 +6,11 @@ var servers = require('../../controller/servers/index');
 
 module.exports = function (app) {
     //首页
-    app.get('/server',servers.checkLogin)
+    app.get('/server',servers.checkLogin);
     app.get('/server',servers.index);
     //登入登出
     app.get('/server/login',servers.getlogin);
-    app.post('/server/login',servers.postlogin)
+    app.post('/server/login',servers.postlogin);
     app.get('/server/logout',servers.logout);
     //用户管理
     app.post('/server/adduser',servers.adduser);
@@ -19,9 +19,12 @@ module.exports = function (app) {
     app.get('/server/remove/:name',servers.remove);
     //文章管理
     app.get('/article',servers.article);
-    app.get('/addarticle',servers.addarticle)
-    app.post('/addarticles',servers.addarticles)
-    app.get('/checkaticle',servers.checkaticle)
-    app.get('/editaticle',servers.editaticle)
-    app.get('/removeaticle',servers.removeaticle)
+    app.get('/article/search',servers.articlesearch);
+    app.get('/addarticle',servers.addarticle);
+    app.post('/addarticles',servers.addarticles);
+    app.get('/checkaticle/:id',servers.checkaticle);
+    app.get('/editaticle/:id',servers.geteditaticle);
+    app.post('/editarticles/:id',servers.posteditaticle);
+    app.get('/removeaticle/:id',servers.removeaticle)
+
 }
