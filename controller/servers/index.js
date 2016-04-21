@@ -91,7 +91,11 @@ var servers = {
     },
     search: function (req,res) {
         var name = req.query.searchname;
-        User.search(name, function (err,user) {
+        var query = {};
+        if(name){
+            query['name'] = new RegExp(name);
+        }
+        User.search(query, function (err,user) {
             if(err){
                 req.flash('error',err);
                 return res.redirect('/server');
@@ -144,7 +148,11 @@ var servers = {
     },
     articlesearch: function (req,res) {
         var title = req.query.searchname;
-        Article.search(title, function (err,articles) {
+        var query = {};
+        if(title){
+            query['title'] = new RegExp(title);
+        }
+        Article.search(query, function (err,articles) {
             if(err){
                 req.flash('error',err);
             }

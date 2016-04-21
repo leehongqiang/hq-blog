@@ -44,8 +44,8 @@ User.getAll = function (callback) {
     })
 }
 
-User.search = function (name,callback) {
-    userModel.findOne({name:name}, function (err,users) {
+User.search = function (query,callback) {
+    userModel.findOne(query, function (err,users) {
         if(err){
             return callback(err);
         }

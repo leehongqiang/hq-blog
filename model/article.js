@@ -80,8 +80,8 @@ Article.remove = function (id,callback) {
         callback(null);
     })
 }
-Article.search = function (title,callback) {
-    articleModel.find({title:title}, function (err,articles) {
+Article.search = function (query,callback) {
+    articleModel.find(query, function (err,articles) {
         if(err){
             return callback(err);
         }
