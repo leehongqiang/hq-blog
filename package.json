@@ -16,6 +16,7 @@
     "mongoose": "^4.4.12",
     "connect-flash": "^0.1.1",
     "express-session": "^1.13.0",
-    "connect-mongo": "^0.4.1"
+    "connect-mongo": "^0.4.1",
+    "ueditor": "^1.1.1"
   }
 }

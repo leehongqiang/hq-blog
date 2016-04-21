@@ -22,15 +22,16 @@
                         <label for="exampleInputPassword1">标签</label>
                         <input type="text" class="form-control" id="exampleInputPassword1" placeholder="请输入标签" name="tag" value="<%=article.tag%>">
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">文章类容</label>
-                        <textarea type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入内容" rows="30" name="content"><%=article.content%></textarea>
-                    </div>
-
-                    <!--<button type="submit" class="btn btn-default pull-right btn-primary">发表</button>-->
+                    <label for="exampleInputPassword1">文章类容</label>
+                    <textarea id="editor" placeholder="请输入内容" rows="30" name="content" style="height: 500px"><%=article.content%></textarea>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('editor');
+</script>
 <% include footer%>
