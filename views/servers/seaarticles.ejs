@@ -36,7 +36,7 @@
                         <tr >
                             <th>作者</th>
                             <th>标题</th>
-                            <th>内容</th>
+                            <!--<th>内容</th>-->
                             <th>时间</th>
                             <th>标签</th>
                             <th>操作</th>
@@ -47,13 +47,13 @@
                         <tr>
                             <td class="col-sm-1"><%= article.author%></td>
                             <td class="col-sm-3"><%= article.title%></td>
-                            <td class="col-sm-3"><p><%= article.content.substr(0,25)+'...'%></p></td>
+                            <!--<td class="col-sm-3"><p><%#= article.content.substr(0,25)+'...'%></p></td>-->
                             <td class="col-sm-2"><%= getdate(article.date).minute%></td>
                             <td class="col-sm-1"><%= article.tag%></td>
                             <td class="col-sm-2">
                                 <a href="/checkaticle/<%=article._id%>" class="btn btn-primary">查看</a>
                                 <a href="/editaticle/<%=article._id%>" class="btn btn-primary">编辑</a>
-                                <a href="/removeaticle/<%=article._id%>" class="btn btn-primary">删除</a>
+                                <a href="/removeaticle/<%=article._id%>" class="btn btn-danger">删除</a>
                             </td>
                         </tr>
                         <%})%>
