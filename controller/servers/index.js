@@ -7,15 +7,40 @@ var Article = require('../../model/article.js')
 var servers = {
     //首页
     index:function (req,res) {
-        User.getAll(function (err,users) {
-            res.render('servers/users',{
+        var searchs = {};
+        var page={limit:10,num:1};
+        if(req.query.p){
+            page['num'] = req.query.p<1?1:req.query.p;
+        }
+
+        var model = {
+            search:searchs,
+            columns:'name alias director publish images.coverSmall create_date type deploy',
+            page:page
+        }
+        User.getAll(model, function (err,pageCount,users) {
+            page['pageCount'] = pageCount;
+            page['size'] = users.length;
+            page['numberOf']=pageCount>5?5:pageCount;
+
+            return res.render('servers/users',{
                 title:'用户列表',
                 users:users,
+                page:page,
                 success:req.flash('success').toString(),
                 error:req.flash('error').toString(),
                 emptys:req.flash('emptys').toString()
             });
         });
+        //User.getAll(function (err,users) {
+        //    res.render('servers/users',{
+        //        title:'用户列表',
+        //        users:users,
+        //        success:req.flash('success').toString(),
+        //        error:req.flash('error').toString(),
+        //        emptys:req.flash('emptys').toString()
+        //    });
+        //});
     },
     //登入登出
     getlogin: function (req,res) {
@@ -136,15 +161,36 @@ var servers = {
     },
     //文章管理
     article: function (req,res) {
-        Article.getAll(function (err,articles) {
-            res.render('servers/articles',{
-                title:"文章",
+        var search={};
+        var page={limit:2,num:1};
+        if(req.query.p){
+            page['num'] = req.query.p<1?1:req.query.p;
+        }
+        var model = {
+            searchs:search,
+            columns:'name alias director publish images.coverSmall create_date type deploy',
+            page:page
+        }
+        Article.getAll(model, function (err,pageCount,articles) {
+            page['pageCount'] = pageCount;
+            page['size'] = articles.length;
+            page['numberOf']=pageCount>5?5:pageCount;
+            return res.render('servers/articles',{
+                title:'文章列表',
                 articles:articles,
+                page:page,
                 success:req.flash('success').toString(),
                 error:req.flash('error').toString(),
             });
         });
-
+        //Article.getAll(function (err,articles) {
+        //    res.render('servers/articles',{
+        //        title:"文章",
+        //        articles:articles,
+        //        success:req.flash('success').toString(),
+        //        error:req.flash('error').toString(),
+        //    });
+        //});
     },
     articlesearch: function (req,res) {
         var title = req.query.searchname;

@@ -4,16 +4,17 @@
     <li class="selected"><a href="/article"><i class="fa fa-file-text-o"></i> 文章管理</a></li>
 </ul>
 <%
-    function getdate(date) {
-        return {
-            year: date.getFullYear(),
-            month: date.getFullYear() + "-" + (date.getMonth() + 1),
-            day: date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate(),
-            minute: date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() +
-            ":" + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes())
-        }
+function getdate(date) {
+    return {
+        year: date.getFullYear(),
+        month: date.getFullYear() + "-" + (date.getMonth() + 1),
+        day: date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate(),
+        minute: date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() +
+        ":" + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes())
     }
+}
 %>
+
 <% include nav %>
 <div id="wrapper">
     <div class="container-fluid">
@@ -45,11 +46,11 @@
                         <tbody>
                         <% articles.forEach(function (article,index) {%>
                         <tr>
-                            <td class="col-sm-1"><%= article.author%></td>
-                            <td class="col-sm-3"><%= article.title%></td>
+                            <td class="col-sm-1"><%=article.author%></td>
+                            <td class="col-sm-3"><%=article.title%></td>
                             <!--<td class="col-sm-3"><%#- article.content%></td>-->
-                            <td class="col-sm-2"><%= getdate(article.date).minute%></td>
-                            <td class="col-sm-1"><%= article.tag%></td>
+                            <td class="col-sm-2"><%=getdate(article.date).minute%></td>
+                            <td class="col-sm-1"><%=article.tag%></td>
                             <td class="col-sm-2">
                                 <a href="/checkaticle/<%=article._id%>" class="btn btn-primary">查看</a>
                                 <a href="/editaticle/<%=article._id%>" class="btn btn-primary">编辑</a>
@@ -60,6 +61,55 @@
                         </tbody>
                     </table>
                 </div>
+                <%if(page.pageCount !=1){%>
+                <ul id="paginator" pageCount="<%=page.pageCount%>" pageNum="<%=page.num%>" pageSize="<%=page.size%>" pageLimit="<%=page.limit%>" numberOfPages="<%=page.numberOf%>" style="float:right!important"></ul>
+                <%}%>
+                <script>
+                    $(function () {
+                        //获得浏览器参数
+                        $.extend({
+                            getUrlVars: function () {
+                                var vars = [],hash;
+                                var hashes = window.location.href.slice(window.location.href.indexOf('?')+1).split('&');
+                                for (var i = 0;i < hashes.length ; i++){
+                                    hash = hashes[i].split('=');
+                                    vars.push(hash[0]);
+                                    vars[hash[0]]=hash[1];
+                                }
+                                return vars;
+                            },
+                            getUrlVar: function (name) {
+                                return $.getUrlVars()[name];
+                            }
+                        });
+                        //封装浏览器参数
+
+                        var composeUrlParams = function () {
+                            var param = '';
+                            $.each($.getUrlVars(), function (i,item) {
+                                if(item!='p'){
+                                    var val = $.getUrlVar(item);
+                                    if(val){
+                                        param+="&"+item+"="+val;
+                                    }
+                                }
+                            });
+                            return param;
+                        }
+                        var container = $('#paginator');
+                        var option = {
+                            currentPage:container.attr('pageNum'),
+                            totalPages:container.attr('pageCount'),
+                            numberOfPages:container.attr('numberOfPages'),
+                            pageUrl: function (type,page,current) {
+                                return "/article?"+composeUrlParams()+"&p="+page;
+                            },
+                            bootstrapMajorVersion:3
+                        }
+
+                        container.bootstrapPaginator(option);
+                    })
+                </script>
             </div>
         </div>
     </div>

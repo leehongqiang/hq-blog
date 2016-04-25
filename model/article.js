@@ -88,12 +88,33 @@ Article.search = function (query,callback) {
         callback(null,articles);
     });
 }
-Article.getAll = function (callback) {
-    articleModel.find({}, function (err,articles) {
+Article.getAll = function (obj,callback) {
+    var q =obj.searchs||{};
+    var col = obj.columns;
+    var pageNumber = obj.page.num||1;
+    var resultsPerPage = obj.page.limit ||3;
+    var skipFrom = (pageNumber*resultsPerPage)-resultsPerPage;
+    var query = articleModel.find(q).sort('-date').skip(skipFrom).limit(resultsPerPage);
+
+    query.exec(function (err,articles) {
         if(err){
-            return callback(err);
+            callback (err,null,null);
+        }else{
+            articleModel.count(q, function (err,count) {
+                if(err){
+                    callback(err,null,null);
+                }else{
+                    var pageCount = Math.ceil(count/resultsPerPage);
+                    callback(null,pageCount,articles);
+                }
+            });
         }
-        callback(null,articles);
     });
+    //articleModel.find({}, function (err,articles) {
+    //    if(err){
+    //        return callback(err);
+    //    }
+    //    callback(null,articles);
+    //});
 }
 
