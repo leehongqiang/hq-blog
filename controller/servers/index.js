@@ -162,7 +162,7 @@ var servers = {
     //文章管理
     article: function (req,res) {
         var search={};
-        var page={limit:2,num:1};
+        var page={limit:10,num:1};
         if(req.query.p){
             page['num'] = req.query.p<1?1:req.query.p;
         }
