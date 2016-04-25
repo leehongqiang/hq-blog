@@ -9,6 +9,8 @@ node: v0.10+
 
 express:4+
 
+数据库：mongodb 2.6
+
 # 安装
 clone 项目
 
