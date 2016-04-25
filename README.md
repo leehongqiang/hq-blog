@@ -1,5 +1,14 @@
 # hq-blog
 个人博客
+
+本项目是基于node 和express开发的个人博客系统
+
+# 环境：
+
+node: v0.10+
+
+express:4+
+
 # 安装
 clone 项目
 
