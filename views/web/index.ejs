@@ -51,7 +51,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!------ Eng Light Box ------>
 
 </head>
-<body>
+<body style="margin-top: 0">
 <!-- header -->
 	<div class="banner">
 		<div class="container">
@@ -130,43 +130,57 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<h3>个人博客</h3>
 			<div class="container">
 				<ul class="timeline">
-					<li>
-						<div class="timeline-badge info"><i class="fa fa-file-text"></i></div>
-						<div class="timeline-panel">
-							<div class="timeline-heading">
-								<h4 class="timeline-title">User Logged in</h4>
-								<span><i class="fa fa-clock-o fa-2x"></i>1 hour 20 minutes ago</span>
-								<hr />
-							</div>
-							<div class="timeline-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-									incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-									quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-									Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-									Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-								</p>
-							</div>
-						</div>
-					</li>
-					<li class="timeline-inverted">
-						<div class="timeline-badge success"><i class="fa fa-search"></i></div>
-						<div class="timeline-panel">
-							<div class="timeline-heading">
-								<h4 class="timeline-title">User Content Search</h4>
-								<span><i class="fa fa-clock-o fa-2x"></i> 57 minutes ago</span>
-								<hr />
-							</div>
-							<div class="timeline-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-									incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-									quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-									Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-									Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-								</p>
-							</div>
-						</div>
-					</li>
+					<%
+					function getdate(date) {
+						return {
+							year: date.getFullYear(),
+							month: date.getFullYear() + "-" + (date.getMonth() + 1),
+							day: date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate(),
+							minute: date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() +
+							":" + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes())
+						}
+					}
+					%>
+					<% articles.forEach(function (article,index) { %>
+						<% if (index%2 == 0){%>
+							<li>
+								<div class="timeline-badge info"><i class="fa fa-file-text"></i></div>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4 class="timeline-title"><%=article.title%></h4>
+										<span>发布时间：<%=getdate(article.date).minute%></span>
+										<span>作者：<%=article.author%></span>
+										<span>标签：<%=article.tag%></span>
+										<hr />
+									</div>
+									<div class="timeline-body">
+										<p><%- article.content%>
+										</p>
+									</div>
+								</div>
+							</li>
+						<%}else {%>
+								<li class="timeline-inverted">
+									<div class="timeline-badge info"><i class="fa fa-file-text" style="color: #000"></i></div>
+									<div class="timeline-panel">
+										<div class="timeline-heading">
+											<h4 class="timeline-title"><%=article.title%></h4>
+											<span>发布时间：<%=getdate(article.date).minute%></span>
+											<span>作者：<%=article.author%></span>
+											<span>标签：<%=article.tag%></span>
+											<hr />
+										</div>
+										<div class="timeline-body">
+											<p><%- article.content%>
+											</p>
+										</div>
+									</div>
+								</li>
+						<%}%>
+					<% }) %>
+
 				</ul>
+				<a href="" class="btn btn-primary col-sm-offset-5 col-sm-2" style="margin-bottom: 20px;"> 查看更多</a>
 			</div>
 	</div>
 <!-- services -->

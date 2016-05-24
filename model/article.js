@@ -118,3 +118,12 @@ Article.getAll = function (obj,callback) {
     //});
 }
 
+Article.getMany = function (obj,callback) {
+    articleModel.find({}, function (err,articles) {
+        if(err){
+            callback(err);
+        }
+        callback(null,articles)
+    }).limit(obj.num).sort({'date':'-1'});
+}
+
