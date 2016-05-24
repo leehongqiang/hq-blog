@@ -1,190 +1,366 @@
-
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Dark Admin</title>
+<title>Home</title>
+<link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+<link href="../../css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="../../darkadmin/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="../../darkadmin/css/local.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Recoup Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link rel="stylesheet" href="../../css/swipebox.css">
+<script src="../../js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../../darkadmin/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap-paginator.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="utf-8" src="../../ueditor/lang/zh-cn/zh-cn.js"> </script>
+<script type="text/javascript" src="../../js/move-top.js"></script>
+       <script type="text/javascript" src="../../js/easing.js"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+				});
+			});
+		</script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+				/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+				*/
+		$().UItoTop({ easingType: 'easeOutQuart' });
+});
+</script>
+<!------ Light Box ------>
+    <script src="../../js/jquery.swipebox.min.js"></script>
+    <script type="text/javascript">
+		jQuery(function($) {
+			$(".swipebox").swipebox();
+		});
+	</script>
+    <!------ Eng Light Box ------>
 
-    <link rel="stylesheet" type="text/css" href="../../darkadmin/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../darkadmin/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../darkadmin/css/local.css" />
-    <script type="text/javascript" src="../../darkadmin/js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="../../darkadmin/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
+<!-- header -->
+	<div class="banner">
+		<div class="container">
+			<div class="logo">
+				<h1><a href="index.html">个人简介</a></h1>
+			</div>	
+			<div class="banner-info">
+				<h2>嗨，我是李洪强</h2>
+				<h3>每天多学一点，就进步一大截！</h3>
+			</div>
+		</div>
+	</div>
+<!-- header -->
+<!-- about -->
+				<div class="scroll">
+					<a href="#contact" class="scroll"><img src="../../images/index/down.png" class="img-responsive" alt=""></a>
+				</div>
+	<div class="about">
+		<div class="container">
+			<h3>个人技能</h3>
+			<div class="study2">
+			<div class="col-md-6 about-left">
+						<h4>Html</h4>
+							<div class="progress">
+							  <div class="progress-bar progress-bar-danger-3" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+								<span class="sr-only">90% Complete (success)</span>
+							  </div>
+							</div>
+						<h4>Css</h4>
+						<div class="progress">
+						  <div class="progress-bar progress-bar-danger-3" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+							<span class="sr-only">80% Complete</span>
+						  </div>
+						</div>
+						<h4>Js</h4>
+						<div class="progress">
+						  <div class="progress-bar progress-bar-danger-3" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+							<span class="sr-only">80% Complete (warning)</span>
+						  </div>
+						</div>
+						<h4>Node</h4>
+						<div class="progress">
+						  <div class="progress-bar progress-bar-danger-3" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+							<span class="sr-only">70% Complete (danger)</span>
+						  </div>
+						</div>
+					</div>
+					<div Class="col-md-6 about-right">
+						<h4>Python</h4>
+						<div class="progress">
+						  <div class="progress-bar progress-bar-danger-3" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+							<span class="sr-only">60% Complete (danger)</span>
+						  </div>
+						</div>
+						<h4>Test</h4>
+						<div class="progress">
+						  <div class="progress-bar progress-bar-danger-3" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+							<span class="sr-only">90% Complete (danger)</span>
+						  </div>
+						</div>
+						<h4>Selenium</h4>
+						<div class="progress">
+						  <div class="progress-bar progress-bar-danger-3" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+							<span class="sr-only">60% Complete (danger)</span>
+						  </div>
+						</div>
+					</div>
+		</div>
+	</div>
+	</div>
+<!-- about -->
+<div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >在线案例</a></div>
+<!-- services -->
+	<div class="services">
+		<div class="container">
+			<h3>个人博客</h3>
+			<div class="container">
+				<ul class="timeline">
+					<li>
+						<div class="timeline-badge info"><i class="fa fa-file-text"></i></div>
+						<div class="timeline-panel">
+							<div class="timeline-heading">
+								<h4 class="timeline-title">User Logged in</h4>
+								<span><i class="fa fa-clock-o fa-2x"></i>1 hour 20 minutes ago</span>
+								<hr />
+							</div>
+							<div class="timeline-body">
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+									incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+									quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+									Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+									Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+								</p>
+							</div>
+						</div>
+					</li>
+					<li class="timeline-inverted">
+						<div class="timeline-badge success"><i class="fa fa-search"></i></div>
+						<div class="timeline-panel">
+							<div class="timeline-heading">
+								<h4 class="timeline-title">User Content Search</h4>
+								<span><i class="fa fa-clock-o fa-2x"></i> 57 minutes ago</span>
+								<hr />
+							</div>
+							<div class="timeline-body">
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+									incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+									quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+									Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+									Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+								</p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+	</div>
+<!-- services -->
+<!-- portfolio -->
+	<div class="gallery">
+		<div class="container">
+			<h3>案例</h3>
+			<div class="portfolio">
+					<div id="portfoliolist">
+					<div class="portfolio card mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="card" style="display: inline-block; opacity: 1;">
+						<div class="portfolio-wrapper grid_box">		
+							 <a href="../../images/index/2.JPG" class="swipebox"  title="Image Title"> <img src="../../images/index/2.JPG" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
+		                </div>
+					</div>				
+					<div class="portfolio app mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="app" style="display: inline-block; opacity: 1;">
+						<div class="portfolio-wrapper grid_box">		
+							 <a href="../../images/index/3.JPG" class="swipebox"  title="Image Title"> <img src="../../images/index/3.JPG" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
+		                </div>
+					</div>					
+					<div class="portfolio icon mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="icon" style="display: inline-block; opacity: 1;">
+						<div class="portfolio-wrapper grid_box">		
+							 <a href="../../images/index/4.JPG" class="swipebox"  title="Image Title"> <img src="../../images/index/4.JPG" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
+		                </div>
+					</div>
+					<div class="portfolio app mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="app" style="display: inline-block; opacity: 1;">
+						<div class="portfolio-wrapper grid_box">		
+							 <a href="../../images/index/5.JPG" class="swipebox"  title="Image Title"> <img src="../../images/index/5.JPG" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
+		                </div>
+					</div>			
+					<div class="portfolio card mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="card" style="display: inline-block; opacity: 1;">
+						<div class="portfolio-wrapper grid_box">		
+							 <a href="../../images/index/6.JPG" class="swipebox"  title="Image Title"> <img src="../../images/index/6.JPG" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
+		                </div>
+					</div>	
+					<div class="portfolio card mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="card" style="display: inline-block; opacity: 1;">
+						<div class="portfolio-wrapper grid_box">		
+							 <a href="../../images/index/7.JPG" class="swipebox"  title="Image Title"> <img src="../../images/index/7.JPG" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
+		                </div>
+					</div>	
+					<div class="portfolio icon mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="icon" style="display: inline-block; opacity: 1;">
+						<div class="portfolio-wrapper grid_box">		
+							 <a href="../../images/index/13.JPG" class="swipebox"  title="Image Title"> <img src="../../images/index/13.JPG" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
+		                </div>
+						</div>
+					<div class="portfolio logos mix_all wow bounceIn" data-wow-delay="0.4s" data-cat="logos" style="display: inline-block; opacity: 1;">
+						<div class="portfolio-wrapper grid_box">		
+							 <a href="../../images/index/14.JPG" class="swipebox"  title="Image Title"> <img src="../../images/index/14.JPG" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
+		                </div>
+					</div>
+				<div class="clearfix"></div>					
+				</div>
+		  <div class="clearfix"></div>
+			</div>
 
-    <div id="wrapper" class="wrapper">
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">Back to Admin</a>
-            </div>
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
+		</div>
+	</div>
+<!-- portfolio -->	
+<!-- client -->
+	<div class="client">
+		<div class="container">
+			<h3>Clients</h3>
+			<div class="nbs-flexisel-container"><div class="nbs-flexisel-inner"><ul id="flexiselDemo1" class="nbs-flexisel-ul" style="left: -228px; display: block;">			
+					
+					<li class="nbs-flexisel-item" style="width: 300px;">
+						<div class="sliderfig-grid">
+							<img src="../../images/index/5.png" alt=" " class="img-responsive">
+						</div>
+					</li>
+					<li class="nbs-flexisel-item" style="width: 300px;">
+						<div class="sliderfig-grid">
+							<img src="../../images/index/2.png" alt=" " class="img-responsive">
+						</div>
+					</li>
+					<li class="nbs-flexisel-item" style="width: 300px;">
+						<div class="sliderfig-grid">
+							<img src="../../images/index/3.png" alt=" " class="img-responsive">
+						</div>
+					</li>
+					<li class="nbs-flexisel-item" style="width: 300px;">
+						<div class="sliderfig-grid">
+							<img src="../../images/index/4.png" alt=" " class="img-responsive">
+						</div>
+					</li>
+					<li class="nbs-flexisel-item" style="width: 300px;">
+						<div class="sliderfig-grid">
+							<img src="../../images/index/6.png" alt=" " class="img-responsive">
+						</div>
+					</li>
+					<li class="nbs-flexisel-item" style="width: 300px;">
+						<div class="sliderfig-grid">
+							<img src="../../images/index/7.png" alt=" " class="img-responsive">
+						</div>
+					</li>
+					<li class="nbs-flexisel-item" style="width: 300px;">
+						<div class="sliderfig-grid">
+							<img src="../../images/index/5.png" alt=" " class="img-responsive">
+						</div>
+					</li>
+					<li class="nbs-flexisel-item" style="width: 300px;">
+						<div class="sliderfig-grid">
+							<img src="../../images/index/1.png" alt=" " class="img-responsive">
+						</div>
+					</li>
+					
+					
+					</ul>
+					<div class="nbs-flexisel-nav-left" style="top: 27px;"></div><div class="nbs-flexisel-nav-right" style="top: 27px;"></div></div></div>
+					<script type="text/javascript">
+							$(window).load(function() {
+								$("#flexiselDemo1").flexisel({
+									visibleItems: 7,
+									animationSpeed: 1000,
+									autoPlay: true,
+									autoPlaySpeed: 3000,    		
+									pauseOnHover: true,
+									enableResponsiveBreakpoints: true,
+									responsiveBreakpoints: { 
+										portrait: { 
+											changePoint:480,
+											visibleItems: 2
+										}, 
+										landscape: { 
+											changePoint:640,
+											visibleItems:3
+										},
+										tablet: { 
+											changePoint:768,
+											visibleItems: 3
+										}
+									}
+								});
+								
+							});
+					</script>
+					<script type="text/javascript" src="../../js/jquery.flexisel.js"></script>
 
-                    <li class="selected"><a href="/"><i class="fa fa-globe"></i> Blog</a></li>
 
-                </ul>
-                <ul class="nav navbar-nav navbar-right navbar-user">
-                    <li class="dropdown messages-dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Messages <span class="badge">2</span> <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-header">2 New Messages</li>
-                            <li class="message-preview">
-                                <a href="#">
-                                    <span class="avatar"><i class="fa fa-bell"></i></span>
-                                    <span class="message">Security alert</span>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li class="message-preview">
-                                <a href="#">
-                                    <span class="avatar"><i class="fa fa-bell"></i></span>
-                                    <span class="message">Security alert</span>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li><a href="#">Go to Inbox <span class="badge">2</span></a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown user-dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Steve Miller<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-                            <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
 
-       <div class="container">
-            <div class="row">
-               
-                <div class="col-sm-9">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <h2>Article Title</h2>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-                    Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-                    dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-                    Aliquam in felis sit amet augue.
-                            </p>
-                            <div class="text-center">
-                                <a href="#"><i class="fa fa-plus"></i>Full Story</a>
-                                <a href="#"><i class="fa fa-comment"></i>12 Comments</a>
-                                <a href="#"><i class="fa fa-share"></i>11 Shares</a>
-                            </div>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <h2>Article Title</h2>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-                    Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-                    dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-                    Aliquam in felis sit amet augue.
-                            </p>
-                            <div class="text-center">
-                                <a href="#"><i class="fa fa-plus"></i>Full Story</a>
-                                <a href="#"><i class="fa fa-comment"></i>2 Comments</a>
-                                <a href="#"><i class="fa fa-share"></i>211 Shares</a>
-                            </div>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <h2>Article Title</h2>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-                    Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-                    dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-                    Aliquam in felis sit amet augue.
-                            </p>
-                            <div class="text-center">
-                                <a href="#"><i class="fa fa-plus"></i>Full Story</a>
-                                <a href="#"><i class="fa fa-comment"></i>7 Comments</a>
-                                <a href="#"><i class="fa fa-share"></i>67 Shares</a>
-                            </div>
-                        </div>
-                    </div>
-                    <hr />
+		</div>
+	</div>
+<!-- client -->
+<!-- contact -->
+	<div class="contact" id="contact">
+		<div class="container">
+			<h3>Contact</h3>
+			<div class="footer-left">
+				<li><i class="add"> </i>lorem ipsum</li>
+				<li><i class="phone"> </i>1234567890</li>
+				<li><a href="mailto:info@example.com"><i class="mail"> </i>info@sitename.com </a></li>
+			<div class="soci">
+					<ul>
+						<li><a href="#"><i class="facebk"> </i></a></li>
+						<li><a href="#"><i class="twter"> </i></a></li>
+						<li><a href="#"><i class="goopl"> </i></a></li>
+						<li><a href="#"><i class="insta"> </i></a></li>
+						<div class="clearfix"></div>
+					</ul>
+			</div>
+			</div>
+			<div class="co-ntact">
+	
+				  <form method="post" action="contact-post.html">
+					<div class="to">
+						<label>
+							<input type="text" class="text" value="Name" onFocus="this.value = '';"
+								   onBlur="if (this.value == '') {this.value = 'Name';}">
+						</label>
+						<label>
+							<input type="text" class="text" value="Email" onFocus="this.value = '';"
+								   onBlur="if (this.value == '') {this.value = 'Email';}">
+						</label>
+						<label>
+							<input type="text" class="text" value="Subject" onFocus="this.value = '';"
+								   onBlur="if (this.value == '') {this.value = 'Subject';}">
+						</label>
+					</div>
+					<div class="text">
+						<label>
+							<textarea value="Message" onFocus="this.value = '';"
+									  onBlur="if (this.value == '') {this.value = 'Message';}">Message</textarea>
+						</label>
 
-                    <!-- the comment box -->
-                    <div class="well">
-                        <h4>Leave a Comment:</h4>
-                        <form role="form">
-                            <div class="form-group">
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                    </div>
-
-                    <hr>
-
-                    <!-- the comments -->
-                    <h3>Blog contents
-                    <small>2014/03/07 11:43 PM</small>
-                    </h3>
-                    <p>This is a very interesting blog, well structured and organized. Would be great if you included more information on other IT topics as well.</p>
-
-                    <h3>Contacts
-                    <small>2014/03/09 12:11 PM</small>
-                    </h3>
-                    <p>I wanted to get in touch with the author of the blog, but I see no way to do this.</p>
-
-                </div>
-                 <div class="col-sm-3">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <h2>Side</h2>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">News</div>
-                                <div class="panel-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-                                </div>
-                                <div class="text-center">
-                                    <a href="#"><i class="fa fa-plus"></i>Full Story</a>
-                                </div>
-                            </div>
-                            <hr />
-                            <div class="panel panel-default">
-                                <div class="panel-heading">News</div>
-                                <div class="panel-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.
-                                </div>
-                                <div class="text-center">
-                                    <a href="#"><i class="fa fa-plus"></i>Full Story</a>
-                                </div>
-                            </div>
-                            <hr />
-                            <div class="panel panel-default">
-                                <div class="panel-heading">News</div>
-                                <div class="panel-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-                                </div>
-                                <div class="text-center">
-                                    <a href="#"><i class="fa fa-plus"></i>Full Story</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+						<div class="form-submit">
+			           <input name="submit" type="submit" id="submit" value="Submit"><br>
+			           </div>
+	                </div>
+	                <div class="clearfix"></div>
+                   </form>
+			</div>
+		</div>
+		<div class="map">
+			</div>
+	</div>
+	<a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 0;"></span></a>
+<!-- contact -->
 </body>
 </html>

@@ -26,5 +26,4 @@ module.exports = function (app) {
     app.get('/editaticle/:id',servers.geteditaticle);
     app.post('/editarticles/:id',servers.posteditaticle);
     app.get('/removeaticle/:id',servers.removeaticle)
-
 }
