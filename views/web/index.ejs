@@ -1,15 +1,14 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Home</title>
+<title>个人简历</title>
 <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
 <link href="../../css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link rel="stylesheet" type="text/css" href="../../darkadmin/font-awesome/css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css" href="../../darkadmin/css/local.css" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Recoup Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<meta name="keywords" content="个人简历系统" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link rel="stylesheet" href="../../css/swipebox.css">
 <script src="../../js/jquery-1.11.3.min.js"></script>
@@ -45,7 +44,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="../../js/jquery.swipebox.min.js"></script>
     <script type="text/javascript">
 		jQuery(function($) {
-			$(".swipebox").swipebox();
+			$(".swipebox").swipebox({
+				hideBarsDelay:0
+			});
 		});
 	</script>
     <!------ Eng Light Box ------>
@@ -190,47 +191,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<h3>案例</h3>
 			<div class="portfolio">
 					<div id="portfoliolist">
-					<div class="portfolio card mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="card" style="display: inline-block; opacity: 1;">
-						<div class="portfolio-wrapper grid_box">		
-							 <a href="../../images/index/2.JPG" class="swipebox"  title="Image Title"> <img src="../../images/index/2.JPG" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
-		                </div>
-					</div>				
-					<div class="portfolio app mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="app" style="display: inline-block; opacity: 1;">
-						<div class="portfolio-wrapper grid_box">		
-							 <a href="../../images/index/3.JPG" class="swipebox"  title="Image Title"> <img src="../../images/index/3.JPG" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
-		                </div>
-					</div>					
-					<div class="portfolio icon mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="icon" style="display: inline-block; opacity: 1;">
-						<div class="portfolio-wrapper grid_box">		
-							 <a href="../../images/index/4.JPG" class="swipebox"  title="Image Title"> <img src="../../images/index/4.JPG" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
-		                </div>
-					</div>
-					<div class="portfolio app mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="app" style="display: inline-block; opacity: 1;">
-						<div class="portfolio-wrapper grid_box">		
-							 <a href="../../images/index/5.JPG" class="swipebox"  title="Image Title"> <img src="../../images/index/5.JPG" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
-		                </div>
-					</div>			
-					<div class="portfolio card mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="card" style="display: inline-block; opacity: 1;">
-						<div class="portfolio-wrapper grid_box">		
-							 <a href="../../images/index/6.JPG" class="swipebox"  title="Image Title"> <img src="../../images/index/6.JPG" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
-		                </div>
-					</div>	
-					<div class="portfolio card mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="card" style="display: inline-block; opacity: 1;">
-						<div class="portfolio-wrapper grid_box">		
-							 <a href="../../images/index/7.JPG" class="swipebox"  title="Image Title"> <img src="../../images/index/7.JPG" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
-		                </div>
-					</div>	
-					<div class="portfolio icon mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="icon" style="display: inline-block; opacity: 1;">
-						<div class="portfolio-wrapper grid_box">		
-							 <a href="../../images/index/13.JPG" class="swipebox"  title="Image Title"> <img src="../../images/index/13.JPG" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
-		                </div>
-						</div>
-					<div class="portfolio logos mix_all wow bounceIn" data-wow-delay="0.4s" data-cat="logos" style="display: inline-block; opacity: 1;">
-						<div class="portfolio-wrapper grid_box">		
-							 <a href="../../images/index/14.JPG" class="swipebox"  title="Image Title"> <img src="../../images/index/14.JPG" class="img-responsive" alt=""><span class="zoom-icon"></span> </a>
-		                </div>
-					</div>
-				<div class="clearfix"></div>					
+						<% products.forEach(function (product,index) { %>
+							<div class="portfolio card mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="card" style="display: inline-block; opacity: 1;">
+								<div class="portfolio-wrapper grid_box">
+									 <a href="<%=product.imgpath%>" class="swipebox"  title="<%=product.title%>"> <img src="<%=product.imgpath%>" class="" alt="" width="271" height="199"><span class="zoom-icon"></span> </a>
+								</div>
+							</div>
+						<%})%>
+					<div class="clearfix"></div>
 				</div>
 		  <div class="clearfix"></div>
 			</div>

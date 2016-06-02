@@ -72,3 +72,12 @@ Products.remove = function (id,callback) {
         callback(null);
     })
 }
+
+Products.getProduct = function (callback) {
+    productsModel.find({}, function (err,products) {
+        if(err){
+            callback (err);
+        }
+        callback(null,products);
+    })
+}
