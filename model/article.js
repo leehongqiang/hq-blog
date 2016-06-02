@@ -1,14 +1,14 @@
 /**
  * Created by Administrator on 2016/4/19.
  */
-var mongoose = require('./db')
+var mongoose = require('./db');
 
 var articleSchema = new mongoose.Schema({
     author:String,
     title:String,
     date:Date,
     content:String,
-    tag:String,
+    tag:String
 }, {
     collection:'articles'
 });

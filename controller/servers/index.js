@@ -3,7 +3,7 @@
  */
 var User = require('../../model/user.js');
 var Article = require('../../model/article.js')
-
+var Product = require('../../model/product.js')
 var servers = {
     //首页
     index:function (req,res) {
@@ -222,7 +222,12 @@ var servers = {
         var author = req.session.user.name,
             title = req.body.title,
             tag = req.body.tag,
-            content = req.body.content
+            content = req.body.content,
+            imgpath = null
+            content.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/gi, function (match, capture) {
+                imgpath = capture;
+            });
+            console.log(imgpath);
         var newArticle = new Article({
             author:author,
             title:title,
@@ -306,6 +311,70 @@ var servers = {
             res.redirect('back');
         }
         next();
+    },
+    product: function (req,res) {
+        var search={};
+        var page={limit:5,num:1};
+        if(req.query.p){
+            page['num'] = req.query.p<1?1:req.query.p;
+        }
+        var model = {
+            searchs:search,
+            columns:'name alias director publish images.coverSmall create_date type deploy',
+            page:page
+        }
+        Product.getAll(model, function (err,pageCount,products) {
+            page['pageCount'] = pageCount;
+            page['size'] = products.length;
+            page['numberOf']=pageCount>5?5:pageCount;
+            return res.render('servers/product',{
+                title:'文章列表',
+                products:products,
+                page:page,
+                success:req.flash('success').toString(),
+                error:req.flash('error').toString(),
+            });
+        });
+    },
+    addproduct: function (req,res) {
+        res.render('servers/addproduct',{
+            title:'发表作品',
+            success:req.flash('success').toString(),
+            error:req.flash('error').toString()
+        });
+    },
+    addproducts: function (req,res) {
+        var title = req.body.title,
+            description = req.body.des,
+            content = req.body.content,
+            imgpath = null
+            content.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/gi, function (match, capture) {
+            imgpath = capture;
+        });
+        console.log(imgpath);
+        var newProduct = new Product({
+            title:title,
+            description:description,
+            imgpath:imgpath
+        });
+        newProduct.save(function (err) {
+            if(err){
+                req.flash('error',err);
+            }
+            req.flash('success','发布成功');
+            res.redirect('/product')
+        })
+
+    },
+    removeproduct: function (req,res) {
+        var id= req.params.id;
+        Product.remove(id, function (err) {
+            if(err){
+                req.flash('error',err);
+            }
+            req.flash('success','删除成功');
+            res.redirect('/product');
+        });
     }
 }
 

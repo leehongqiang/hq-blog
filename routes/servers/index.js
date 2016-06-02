@@ -26,4 +26,10 @@ module.exports = function (app) {
     app.get('/editaticle/:id',servers.geteditaticle);
     app.post('/editarticles/:id',servers.posteditaticle);
     app.get('/removeaticle/:id',servers.removeaticle)
+
+    //作品管理
+    app.get('/product',servers.product);
+    app.get('/addproduct',servers.addproduct);
+    app.post('/addproduct',servers.addproducts);
+    app.get('/removeproduct/:id',servers.removeproduct)
 }
