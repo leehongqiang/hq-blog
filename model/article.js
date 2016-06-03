@@ -127,3 +127,19 @@ Article.getMany = function (obj,callback) {
     }).limit(obj.num).sort({'date':'-1'});
 }
 
+Article.getArticle = function (callback) {
+    articleModel.find({}, function (err,articles) {
+        if(err){
+            return callback(err);
+        }
+        callback(null,articles);
+    });
+}
+Article.getTag = function (callback) {
+    articleModel.distinct('tag', function (err,tags) {
+        if(err){
+            return callback(err);
+        }
+        callback(null,tags);
+    })
+}
