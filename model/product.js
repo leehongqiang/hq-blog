@@ -7,7 +7,8 @@ var caseSchema = new mongoose.Schema({
     title:String,
     date:Date,
     description:String,
-    imgpath:String
+    imgpath:String,
+    prourl:String
 },{
     collection:'products'
 });
@@ -19,6 +20,7 @@ function Products(products){
     this.title = products.title;
     this.description = products.description;
     this.imgpath = products.imgpath;
+    this.prourl = products.prourl
 }
 
 
@@ -29,7 +31,8 @@ Products.prototype.save = function (callback) {
         title:this.title,
         date:Date.now(),
         description:this.description,
-        imgpath : this.imgpath
+        imgpath : this.imgpath,
+        prourl:this.prourl
     };
 
     var newProducts = new productsModel(product);

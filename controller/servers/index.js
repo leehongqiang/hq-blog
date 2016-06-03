@@ -4,6 +4,7 @@
 var User = require('../../model/user.js');
 var Article = require('../../model/article.js')
 var Product = require('../../model/product.js')
+var Contact = require('../../model/contact.js')
 var servers = {
     //首页
     index:function (req,res) {
@@ -347,15 +348,16 @@ var servers = {
         var title = req.body.title,
             description = req.body.des,
             content = req.body.content,
-            imgpath = null
+            prourl = req.body.prourl,
+            imgpath = null;
             content.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/gi, function (match, capture) {
             imgpath = capture;
         });
-        console.log(imgpath);
         var newProduct = new Product({
             title:title,
             description:description,
-            imgpath:imgpath
+            imgpath:imgpath,
+            prourl:prourl
         });
         newProduct.save(function (err) {
             if(err){
@@ -374,6 +376,30 @@ var servers = {
             }
             req.flash('success','删除成功');
             res.redirect('/product');
+        });
+    },
+    contacts: function (req,res) {
+        var search={};
+        var page={limit:5,num:1};
+        if(req.query.p){
+            page['num'] = req.query.p<1?1:req.query.p;
+        }
+        var model = {
+            searchs:search,
+            columns:'name alias director publish images.coverSmall create_date type deploy',
+            page:page
+        }
+        Contact.getAll(model, function (err,pageCount,contacts) {
+            page['pageCount'] = pageCount;
+            page['size'] = contacts.length;
+            page['numberOf']=pageCount>5?5:pageCount;
+            return res.render('servers/contacts',{
+                title:'反馈',
+                contacts:contacts,
+                page:page,
+                success:req.flash('success').toString(),
+                error:req.flash('error').toString(),
+            });
         });
     }
 }

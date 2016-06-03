@@ -3,6 +3,7 @@
     <li class=""><a href="/server"><i class="fa fa-user"></i> 用户管理</a></li>
     <li class=""><a href="/article"><i class="fa fa-file-text-o"></i> 文章管理</a></li>
     <li class="selected"><a href="/product"><i class="fa fa-file-text-o"></i> 案例管理</a></li>
+    <li class=""><a href="/contacts"><i class="fa fa-file-text-o"></i> 联系人管理</a></li>
 </ul>
 <%
 function getdate(date) {
@@ -31,6 +32,7 @@ function getdate(date) {
                             <th>标题</th>
                             <th>缩略图</th>
                             <th>图片路径</th>
+                            <th>作品链接</th>
                             <!--<th>内容</th>-->
                             <th>时间</th>
                             <th>描述</th>
@@ -43,6 +45,7 @@ function getdate(date) {
                             <td class="col-sm-3"><%=product.title%></td>
                             <td class="col-sm-2"><img src="<%=product.imgpath%>" alt="" width="200" height="50"/></td>
                             <td class="col-sm-2"><%=product.imgpath%></td>
+                            <td class="col-sm-2"><%=product.prourl%></td>
                             <td class="col-sm-1"><%=getdate(product.date).minute%></td>
                             <td class="col-sm-1"><%=product.description%></td>
                             <td class="col-sm-2">

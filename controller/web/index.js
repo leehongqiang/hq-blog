@@ -1,6 +1,7 @@
 
 var Article = require('../../model/article.js')
 var Product = require('../../model/product.js')
+var Contact = require('../../model/contact.js')
 var webs = {
     index:function (req,res) {
         var obj = {
@@ -21,12 +22,26 @@ var webs = {
         });
 
     },
-    reg: function (req,res) {
-        res.render('web/register');
-    },
-    test: function (req,res) {
-        res.render('demo/test');
+    contact: function (req,res) {
+        var user = req.body.user,
+            email = req.body.email,
+            subject = req.body.subject,
+            message = req.body.message
+        var newContact = new Contact({
+            user:user,
+            email:email,
+            subject:subject,
+            message:message
+        });
+        newContact.save(function (err) {
+            if(err){
+                req.flash('error',err);
+            }
+            req.flash('success','发布成功');
+            res.redirect('/');
+        })
     }
+
 }
 
 

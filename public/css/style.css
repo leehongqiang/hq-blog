@@ -330,6 +330,10 @@ div#portfoliolist {
   top: -5px;
   width: 100%;
   height: 203px;
+  line-height: 203px;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
 }
 .grid_box a:hover .zoom-icon {
   top: 0;

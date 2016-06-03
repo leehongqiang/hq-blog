@@ -31,5 +31,7 @@ module.exports = function (app) {
     app.get('/product',servers.product);
     app.get('/addproduct',servers.addproduct);
     app.post('/addproduct',servers.addproducts);
-    app.get('/removeproduct/:id',servers.removeproduct)
+    app.get('/removeproduct/:id',servers.removeproduct);
+    //信息反馈管理
+    app.get('/contacts',servers.contacts);
 }

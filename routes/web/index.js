@@ -5,6 +5,5 @@
 var webs = require('../../controller/web/index')
 module.exports = function (app) {
     app.get('/',webs.index);
-    app.get('/reg',webs.reg);
-    app.get('/test',webs.test);
+    app.post('/contact',webs.contact)
 }
