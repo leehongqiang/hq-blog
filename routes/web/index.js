@@ -7,4 +7,5 @@ module.exports = function (app) {
     app.get('/',webs.index);
     app.post('/contact',webs.contact);
     app.get('/blog',webs.blog);
+    app.get('/resume',webs.resume);
 }

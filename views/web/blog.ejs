@@ -1,4 +1,12 @@
 <% include header%>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+        <li><a href="/archive">存档 <span class="sr-only">(current)</span></a></li>
+        <li><a href="/tag">标签 <span class="sr-only">(current)</span></a></li>
+        <li><a href="/resume">关于 <span class="sr-only">(current)</span></a></li>
+        <li><a href="/">返回 <span class="sr-only">(current)</span></a></li>
+    </ul>
+</div>
 </div>
 </nav>
 <%
@@ -22,8 +30,7 @@ function randomColor(){
     <div class="row">
         <div class="col-sm-9">
             <div class="row">
-        <%articles.forEach(function (article,index) {%>
-
+            <%articles.forEach(function (article,index) {%>
                 <div class="col-xs-12 text-primary" style="margin-bottom: 20px;box-shadow: 0px 0px 10px 0px rgb(0, 163, 255);">
                     <h2><%=article.title%></h2>
                     <div class="text-left">
@@ -34,8 +41,7 @@ function randomColor(){
                     <hr/>
                     <p style="background: #fff"><%-article.content%></p>
                 </div>
-
-        <%})%>
+            <%})%>
             </div>
             <hr />
         </div>

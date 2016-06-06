@@ -57,7 +57,7 @@
 	<div class="banner">
 		<div class="container">
 			<div class="logo">
-				<h1><a href="/">个人简介</a></h1>
+				<h1><a href="/resume">个人简介</a></h1>
 			</div>	
 			<div class="banner-info">
 				<h2>嗨，我是李洪强</h2>
@@ -195,7 +195,7 @@
 				<% products.forEach(function (product,index) { %>
 				<div class="portfolio card mix_all  wow bounceIn" data-wow-delay="0.4s" data-cat="card" style="display: inline-block; opacity: 1;">
 					<div class="portfolio-wrapper grid_box">
-						<a href="<%=product.prourl%>" class=""  title="<%=product.title%>"> <img src="<%=product.imgpath%>" class="" alt="" width="271" height="199"><span class="zoom-icon"><%=product.title%></span> </a>
+						<a href="<%=product.prourl%>" class="" target="_blank"  title="<%=product.title%>"> <img src="<%=product.imgpath%>" class="" alt="" width="271" height="199"><span class="zoom-icon"><%=product.title%></span> </a>
 					</div>
 				</div>
 				<%})%>

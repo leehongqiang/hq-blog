@@ -22,6 +22,20 @@ var webs = {
         });
 
     },
+    resume: function (req,res) {
+        Article.getTag(function (err,tags) {
+            if (err) {
+                res.flash('error', err);
+            }
+            return res.render('web/resume', {
+                title: "个人简历",
+                tags: tags,
+                success: req.flash('success').toString(),
+                error: req.flash('error').toString(),
+                emptys: req.flash('emptys').toString()
+            });
+        });
+    },
     contact: function (req,res) {
         var user = req.body.user,
             email = req.body.email,
