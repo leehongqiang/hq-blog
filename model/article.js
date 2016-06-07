@@ -6,7 +6,13 @@ var mongoose = require('./db');
 var articleSchema = new mongoose.Schema({
     author:String,
     title:String,
-    date:Date,
+    date:{
+        date:String,
+        year:String,
+        month:String,
+        day:String,
+        minute:String
+    },
     content:String,
     tag:String
 }, {
@@ -24,19 +30,25 @@ function Article(article){
 module.exports = Article;
 
 Article.prototype.save = function(callback){
-    //var date = new Date();
-    //var time = {
-    //    date:date,
-    //    year:date.getFullYear(),
-    //    month:date.getFullYear()+"-"+(date.getMonth()+1),
-    //    day:date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate(),
-    //    minute:date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "+date.getHours()+
-    //    ":"+(date.getMinutes()<10?'0'+date.getMinutes():date.getMinutes())
-    //}
+    var date = new Date();
+    var time = {
+        date:date,
+        year:date.getFullYear(),
+        month:date.getFullYear()+"-"+(date.getMonth()+1),
+        day:date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate(),
+        minute:date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "+date.getHours()+
+        ":"+(date.getMinutes()<10?'0'+date.getMinutes():date.getMinutes())
+    }
     var article = {
         author : this.author,
         title : this.title,
-        date : Date.now(),
+        date : {
+            date:time.date,
+            year:time.year,
+            month:time.month,
+            day:time.day,
+            minute:time.minute
+        },
         content : this.content,
         tag : this.tag
     }
@@ -141,5 +153,28 @@ Article.getTag = function (callback) {
             return callback(err);
         }
         callback(null,tags);
+    })
+}
+
+
+Article.getTagArticles = function (tag,callback) {
+    articleModel.find({tag:tag}, function (err,articles) {
+        if(err){
+            return callback(err);
+        }
+        callback(null,articles);
+    });
+}
+
+Article.getArchive = function (callback) {
+    articleModel.find({},{
+        'title':1,
+        'author':1,
+        'date':1
+    }, function (err,articles) {
+        if(err){
+            return callback(err);
+        }
+        callback(null,articles);
     })
 }

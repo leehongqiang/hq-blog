@@ -72,6 +72,52 @@ var webs = {
             });
         });
 
+    },
+    checkaticle: function (req,res) {
+        var id= req.params.id
+        //title = req.params.title,
+        //date = req.params.date
+        Article.getOne(id, function (err,article) {
+            if(err){
+                req.flash('error',err);
+            }
+            req.flash('success','查询成功');
+            res.render('web/artile',{
+                title:'查看文章',
+                article:article,
+                success:req.flash('success').toString(),
+                error:req.flash('error').toString(),
+            });
+        });
+    },
+    getTagArticle: function (req,res) {
+        var tag = req.params.tag;
+        Article.getTagArticles(tag, function (err,articles) {
+            if(err){
+                req.flash('error',err);
+            }
+            req.flash('success','查询成功');
+            res.render('web/tagArticles',{
+                title:'查看文章',
+                articles:articles,
+                success:req.flash('success').toString(),
+                error:req.flash('error').toString(),
+            });
+        })
+    },
+    archive: function (req,res) {
+        Article.getArchive(function (err,articles) {
+            if(err){
+                req.flash("error",err);
+                return  res.redirect('/blog');
+            }
+            res.render('web/archive',{
+                title:"存档",
+                articles:articles,
+                success:req.flash("success").toString(),
+                error:req.flash("error").toString()
+            });
+        });
     }
 
 }

@@ -121,24 +121,12 @@
 	</div>
 	</div>
 <!-- about -->
-
 <!-- services -->
 	<div class="services">
 		<div class="container">
 			<a href="/blog" style="text-decoration: none"><h3>个人博客</h3></a>
 			<div class="container">
 				<ul class="timeline">
-					<%
-					function getdate(date) {
-						return {
-							year: date.getFullYear(),
-							month: date.getFullYear() + "-" + (date.getMonth() + 1),
-							day: date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate(),
-							minute: date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() +
-							":" + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes())
-						}
-					}
-					%>
 					<% articles.forEach(function (article,index) { %>
 						<% if (index%2 == 0){%>
 							<li>
@@ -146,7 +134,7 @@
 								<div class="timeline-panel">
 									<div class="timeline-heading">
 										<h4 class="timeline-title"><%=article.title%></h4>
-										<span>发布时间：<%=getdate(article.date).minute%></span>
+										<span>发布时间：<%=article.date.minute%></span>
 										<span>作者：<%=article.author%></span>
 										<span>标签：<%=article.tag%></span>
 										<hr />
@@ -163,7 +151,7 @@
 									<div class="timeline-panel">
 										<div class="timeline-heading">
 											<h4 class="timeline-title"><%=article.title%></h4>
-											<span>发布时间：<%=getdate(article.date).minute%></span>
+											<span>发布时间：<%=article.date.minute%></span>
 											<span>作者：<%=article.author%></span>
 											<span>标签：<%=article.tag%></span>
 											<hr />
@@ -227,22 +215,18 @@
 			<form method="post" action="/contact" method="post">
 				<div class="to">
 					<label>
-						<input type="text" class="text" value="您的称呼" name="user" onFocus="this.value = '';"
-							   onBlur="if (this.value == '') {this.value = '您的称呼';}">
+						<input type="text" class="text" placeholder="您的称呼" name="user">
 					</label>
 					<label>
-						<input type="text" class="text" value="您的邮箱" name="email" onFocus="this.value = '';"
-							   onBlur="if (this.value == '') {this.value = '您的邮箱';}">
+						<input type="text" class="text" placeholder="您的邮箱" name="email">
 					</label>
 					<label>
-						<input type="text" class="text" value="您的主题" name="subject" onFocus="this.value = '';"
-							   onBlur="if (this.value == '') {this.value = '您的主题';}">
+						<input type="text" class="text" placeholder="您的主题" name="subject">
 					</label>
 				</div>
 				<div class="text">
 					<label>
-							<textarea value="您发送的内容" onFocus="this.value = '';" name="message"
-									  onBlur="if (this.value == '') {this.value = '您发送的内容';}">您发送的内容</textarea>
+							<textarea placeholder="您发送的内容"name="message"></textarea>
 					</label>
 					<div class="form-submit">
 						<input name="submit" type="submit" id="submit" value="提交"><br>

@@ -30,9 +30,9 @@ function randomColor(){
     <div class="row">
         <div class="col-sm-9">
             <div class="row">
-            <%articles.forEach(function (article,index) {%>
+
                 <div class="col-xs-12 text-primary" style="margin-bottom: 20px;box-shadow: 0px 0px 10px 0px rgb(0, 163, 255);">
-                    <h2><a href="/checkaticle/<%=article._id%>"><%=article.title%></a></h2>
+                    <h2><%=article.title%></h2>
                     <div class="text-left">
                         <span>发布时间：<%=article.date.minute%></span>
                         <span>作者：<%=article.author%></span>
@@ -41,20 +41,8 @@ function randomColor(){
                     <hr/>
                     <p style="background: #fff"><%-article.content%></p>
                 </div>
-            <%})%>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="row">
-                <div class="col-xs-12" >
-                    <div class="panel panel-default" style="box-shadow: 0px 0px 10px 0px rgb(0, 163, 255)">
-                        <div class="panel-heading">标签</div>
-                        <%tags.forEach(function (tag,index) {%>
-                            <a class="btn" href="/tag/<%=tag%>" style="background:<%=randomColor()%>;color: #000;font-weight: bold;box-shadow: 0px 0px 10px 0px;margin: 4px"><%=tag%></a>
-                        <%})%>
-                    </div>
-                </div>
-            </div>
+            <hr />
         </div>
     </div>
 </div>

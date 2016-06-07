@@ -1,0 +1,42 @@
+<% include header%>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+        <li><a href="/blog">首页 <span class="sr-only">(current)</span></a></li>
+        <li><a href="/archive">存档 <span class="sr-only">(current)</span></a></li>
+        <li><a href="/resume">关于 <span class="sr-only">(current)</span></a></li>
+        <li><a href="/">返回到网站主页 <span class="sr-only">(current)</span></a></li>
+    </ul>
+</div>
+</div>
+</nav>
+<%
+function getdate(date) {
+    return {
+        year: date.getFullYear(),
+        month: date.getFullYear() + "-" + (date.getMonth() + 1),
+        day: date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate(),
+        minute: date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() +
+        ":" + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes())
+    }
+}
+function randomColor(){
+    var r = Math.floor(Math.random()*256);
+    var g = Math.floor(Math.random()*256);
+    var b = Math.floor(Math.random()*256);
+    return "rgb("+r+","+g+","+b+")";
+};
+%>
+<div class="container" style="margin-top: 100px;margin-bottom: 100px;">
+    <div class="row">
+            <div class="row">
+                <%articles.forEach(function (article,index) {%>
+                <div class="col-xs-12 col-xs-offset-2">
+                    <h3>发布时间：<%=article.date.minute%></h3>
+                    <span><a href="/checkaticle/<%=article._id%>"><%=article.title%></a></span>
+                </div>
+                <%})%>
+            </div>
+    </div>
+</div>
+
+<% include footer%>

@@ -8,4 +8,8 @@ module.exports = function (app) {
     app.post('/contact',webs.contact);
     app.get('/blog',webs.blog);
     app.get('/resume',webs.resume);
+    app.get('/checkaticle/:id',webs.checkaticle);
+    app.get('/tag/:tag',webs.getTagArticle);
+    app.get('/archive',webs.archive);
+
 }
