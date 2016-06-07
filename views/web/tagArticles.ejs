@@ -32,7 +32,7 @@ function randomColor(){
             <div class="row">
                 <%articles.forEach(function (article,index) {%>
                 <div class="col-xs-12 text-primary" style="margin-bottom: 20px;box-shadow: 0px 0px 10px 0px rgb(0, 163, 255);">
-                    <h2><%=article.title%></h2>
+                    <h2><a href="/checkaticle/<%=article._id%>"><%=article.title%></a></h2>
                     <div class="text-left">
                         <span>发布时间：<%=article.date.minute%></span>
                         <span>作者：<%=article.author%></span>
