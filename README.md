@@ -22,4 +22,4 @@ clone 项目
 
 前台访问：http://localhost:3000/ 
 
-上下地址：http://www.sccdkj.com:3000/
+上线地址：http://www.sccdkj.com:3000/
