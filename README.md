@@ -2,7 +2,8 @@
 个人博客
 
 本项目是基于node 和express开发的个人博客系统
-
+![image](https://github.com/leehongqiang/hq-blog/blob/master/public/images/admin.jpg)
+![image](https://github.com/leehongqiang/hq-blog/blob/master/public/images/post.jpg)
 # 环境：
 
 node: v0.10+
