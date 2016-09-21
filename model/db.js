@@ -5,4 +5,4 @@ var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/hqblog');
 
-module.exports = mongoose
+module.exports = mongoose;

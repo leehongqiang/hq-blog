@@ -12,4 +12,4 @@ module.exports = function (app) {
     app.get('/tag/:tag',webs.getTagArticle);
     app.get('/archive',webs.archive);
 
-}
+};

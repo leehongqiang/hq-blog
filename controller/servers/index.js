@@ -2,9 +2,9 @@
  * Created by Administrator on 2016/4/15.
  */
 var User = require('../../model/user.js');
-var Article = require('../../model/article.js')
-var Product = require('../../model/product.js')
-var Contact = require('../../model/contact.js')
+var Article = require('../../model/article.js');
+var Product = require('../../model/product.js');
+var Contact = require('../../model/contact.js');
 var servers = {
     //首页
     index:function (req,res) {
@@ -18,7 +18,7 @@ var servers = {
             search:searchs,
             columns:'name alias director publish images.coverSmall create_date type deploy',
             page:page
-        }
+        };
         User.getAll(model, function (err,pageCount,users) {
             page['pageCount'] = pageCount;
             page['size'] = users.length;
@@ -65,7 +65,7 @@ var servers = {
             }
             //检查密码是否一致
             if(user.password!= req.body.password){
-                req.flash('error','密码错误')
+                req.flash('error','密码错误');
                 return res.redirect('/server/login')
             }
             //
@@ -81,7 +81,7 @@ var servers = {
     //用户管理
     adduser: function (req,res) {
         var name = req.body.username,
-            password = req.body.password
+            password = req.body.password;
 
         var newUser = new  User({
             name:name,
@@ -105,12 +105,12 @@ var servers = {
                         req.flash('error',err);
                         return res.redirect('/server');
                     }
-                    req.flash('success','添加成功')
+                    req.flash('success','添加成功');
                     res.redirect('/server');
                 })
             });
         }else{
-            req.flash('error','用户名为空')
+            req.flash('error','用户名为空');
             res.redirect('/server');
         }
 
@@ -134,7 +134,7 @@ var servers = {
                 title: '搜索结果',
                 users: user,
                 success: req.flash('success').toString(),
-                error: req.flash('error').toString(),
+                error: req.flash('error').toString()
             });
         });
     },
@@ -171,7 +171,7 @@ var servers = {
             searchs:search,
             columns:'name alias director publish images.coverSmall create_date type deploy',
             page:page
-        }
+        };
         Article.getAll(model, function (err,pageCount,articles) {
             page['pageCount'] = pageCount;
             page['size'] = articles.length;
@@ -181,7 +181,7 @@ var servers = {
                 articles:articles,
                 page:page,
                 success:req.flash('success').toString(),
-                error:req.flash('error').toString(),
+                error:req.flash('error').toString()
             });
         });
         //Article.getAll(function (err,articles) {
@@ -224,7 +224,7 @@ var servers = {
             title = req.body.title,
             tag = req.body.tag,
             content = req.body.content,
-            imgpath = null
+            imgpath = null;
             content.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/gi, function (match, capture) {
                 imgpath = capture;
             });
@@ -245,7 +245,7 @@ var servers = {
 
     },
     checkaticle: function (req,res) {
-        var id= req.params.id
+        var id= req.params.id;
             //title = req.params.title,
             //date = req.params.date
         Article.getOne(id, function (err,article) {
@@ -257,7 +257,7 @@ var servers = {
                 title:'查看文章',
                 article:article,
                 success:req.flash('success').toString(),
-                error:req.flash('error').toString(),
+                error:req.flash('error').toString()
             });
         });
     },
@@ -274,7 +274,7 @@ var servers = {
         })
     },
     geteditaticle: function (req,res) {
-        var id = req.params.id
+        var id = req.params.id;
         Article.getOne(id, function (err,article) {
             if(err){
                 req.flash('error',err);
@@ -284,7 +284,7 @@ var servers = {
                 title:'查看文章',
                 article:article,
                 success:req.flash('success').toString(),
-                error:req.flash('error').toString(),
+                error:req.flash('error').toString()
             });
         });
     },
@@ -323,7 +323,7 @@ var servers = {
             searchs:search,
             columns:'name alias director publish images.coverSmall create_date type deploy',
             page:page
-        }
+        };
         Product.getAll(model, function (err,pageCount,products) {
             page['pageCount'] = pageCount;
             page['size'] = products.length;
@@ -333,7 +333,7 @@ var servers = {
                 products:products,
                 page:page,
                 success:req.flash('success').toString(),
-                error:req.flash('error').toString(),
+                error:req.flash('error').toString()
             });
         });
     },
@@ -388,7 +388,7 @@ var servers = {
             searchs:search,
             columns:'name alias director publish images.coverSmall create_date type deploy',
             page:page
-        }
+        };
         Contact.getAll(model, function (err,pageCount,contacts) {
             page['pageCount'] = pageCount;
             page['size'] = contacts.length;
@@ -398,11 +398,11 @@ var servers = {
                 contacts:contacts,
                 page:page,
                 success:req.flash('success').toString(),
-                error:req.flash('error').toString(),
+                error:req.flash('error').toString()
             });
         });
     }
-}
+};
 
 
 module.exports = servers;

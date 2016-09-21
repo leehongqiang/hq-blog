@@ -1,12 +1,12 @@
 
-var Article = require('../../model/article.js')
-var Product = require('../../model/product.js')
-var Contact = require('../../model/contact.js')
+var Article = require('../../model/article.js');
+var Product = require('../../model/product.js');
+var Contact = require('../../model/contact.js');
 var webs = {
     index:function (req,res) {
         var obj = {
             num: 6
-        }
+        };
         Article.getMany(obj, function (err, articles) {
             Product.getProduct(function (err,products) {
                 return res.render('web/index', {
@@ -40,7 +40,7 @@ var webs = {
         var user = req.body.user,
             email = req.body.email,
             subject = req.body.subject,
-            message = req.body.message
+            message = req.body.message;
         var newContact = new Contact({
             user:user,
             email:email,
@@ -74,7 +74,7 @@ var webs = {
 
     },
     checkaticle: function (req,res) {
-        var id= req.params.id
+        var id= req.params.id;
         //title = req.params.title,
         //date = req.params.date
         Article.getOne(id, function (err,article) {
@@ -86,7 +86,7 @@ var webs = {
                 title:'查看文章',
                 article:article,
                 success:req.flash('success').toString(),
-                error:req.flash('error').toString(),
+                error:req.flash('error').toString()
             });
         });
     },
@@ -101,7 +101,7 @@ var webs = {
                 title:'查看文章',
                 articles:articles,
                 success:req.flash('success').toString(),
-                error:req.flash('error').toString(),
+                error:req.flash('error').toString()
             });
         })
     },
@@ -120,7 +120,7 @@ var webs = {
         });
     }
 
-}
+};
 
 
 module.exports = webs;

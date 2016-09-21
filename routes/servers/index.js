@@ -1,7 +1,3 @@
-/**
- * Created by Administrator on 2016/4/15.
- */
-
 var servers = require('../../controller/servers/index');
 
 module.exports = function (app) {
@@ -25,7 +21,7 @@ module.exports = function (app) {
     app.get('/checkaticle/:id',servers.checkaticle);
     app.get('/editaticle/:id',servers.geteditaticle);
     app.post('/editarticles/:id',servers.posteditaticle);
-    app.get('/removeaticle/:id',servers.removeaticle)
+    app.get('/removeaticle/:id',servers.removeaticle);
 
     //作品管理
     app.get('/product',servers.product);
@@ -34,4 +30,4 @@ module.exports = function (app) {
     app.get('/removeproduct/:id',servers.removeproduct);
     //信息反馈管理
     app.get('/contacts',servers.contacts);
-}
+};

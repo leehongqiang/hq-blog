@@ -1,9 +1,3 @@
-/**
- * Created by Administrator on 2016/6/3.
- */
-/**
- * Created by Administrator on 2016/6/2.
- */
 var mongoose = require('./db');
 
 var contactSchema = new mongoose.Schema({
@@ -77,7 +71,7 @@ Contact.remove = function (id,callback) {
         }
         callback(null);
     })
-}
+};
 
 Contact.getProduct = function (callback) {
     contactsModel.find({}, function (err,contacts) {
@@ -86,4 +80,4 @@ Contact.getProduct = function (callback) {
         }
         callback(null,contacts);
     })
-}
+};

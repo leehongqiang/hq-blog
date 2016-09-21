@@ -1,6 +1,3 @@
-/**
- * Created by Administrator on 2016/4/19.
- */
 var mongoose = require('./db');
 
 var articleSchema = new mongoose.Schema({
@@ -38,7 +35,7 @@ Article.prototype.save = function(callback){
         day:date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate(),
         minute:date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "+date.getHours()+
         ":"+(date.getMinutes()<10?'0'+date.getMinutes():date.getMinutes())
-    }
+    };
     var article = {
         author : this.author,
         title : this.title,
@@ -51,7 +48,7 @@ Article.prototype.save = function(callback){
         },
         content : this.content,
         tag : this.tag
-    }
+    };
     var newArticles = new articleModel(article);
     newArticles.save(function (err) {
         if(err){
@@ -59,21 +56,21 @@ Article.prototype.save = function(callback){
         }
         callback(null);
     });
-}
+};
 Article.getOne = function (id,callback) {
     var articleOne = {
         _id:id
         //author:author,
         //title:title,
         //date:date
-    }
+    };
     articleModel.findById(articleOne, function (err,article) {
         if(err){
             return callback(err);
         }
         callback(null,article);
     })
-}
+};
 Article.edit = function (id,title,content,callback) {
     articleModel.update({_id:id},{
         $set:{title:title,content:content}
@@ -83,7 +80,7 @@ Article.edit = function (id,title,content,callback) {
         }
         callback(null,article);
     });
-}
+};
 Article.remove = function (id,callback) {
     articleModel.remove({_id:id}, function (err) {
         if(err){
@@ -91,7 +88,7 @@ Article.remove = function (id,callback) {
         }
         callback(null);
     })
-}
+};
 Article.search = function (query,callback) {
     articleModel.find(query, function (err,articles) {
         if(err){
@@ -99,10 +96,10 @@ Article.search = function (query,callback) {
         }
         callback(null,articles);
     });
-}
+};
 Article.getAll = function (obj,callback) {
     var q =obj.searchs||{};
-    var col = obj.columns;
+    //var col = obj.columns;
     var pageNumber = obj.page.num||1;
     var resultsPerPage = obj.page.limit ||3;
     var skipFrom = (pageNumber*resultsPerPage)-resultsPerPage;
@@ -128,7 +125,7 @@ Article.getAll = function (obj,callback) {
     //    }
     //    callback(null,articles);
     //});
-}
+};
 
 Article.getMany = function (obj,callback) {
     articleModel.find({}, function (err,articles) {
@@ -137,7 +134,7 @@ Article.getMany = function (obj,callback) {
         }
         callback(null,articles)
     }).limit(obj.num).sort({'date':'-1'});
-}
+};
 
 Article.getArticle = function (callback) {
     articleModel.find({}, function (err,articles) {
@@ -146,7 +143,7 @@ Article.getArticle = function (callback) {
         }
         callback(null,articles);
     });
-}
+};
 Article.getTag = function (callback) {
     articleModel.distinct('tag', function (err,tags) {
         if(err){
@@ -154,8 +151,7 @@ Article.getTag = function (callback) {
         }
         callback(null,tags);
     })
-}
-
+};
 
 Article.getTagArticles = function (tag,callback) {
     articleModel.find({tag:tag}, function (err,articles) {
@@ -164,7 +160,7 @@ Article.getTagArticles = function (tag,callback) {
         }
         callback(null,articles);
     });
-}
+};
 
 Article.getArchive = function (callback) {
     articleModel.find({},{
@@ -177,4 +173,4 @@ Article.getArchive = function (callback) {
         }
         callback(null,articles);
     })
-}
+};

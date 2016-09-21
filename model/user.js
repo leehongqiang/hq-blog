@@ -1,5 +1,5 @@
 
-var mongoose = require('./db')
+var mongoose = require('./db');
 
 var userSchema = new mongoose.Schema({
     name:String,
@@ -19,7 +19,7 @@ User.prototype.save = function (callback) {
         name:this.name,
         password:this.password,
         create_time:Date.now()
-    }
+    };
     var newUser = new userModel(user);
     newUser.save(function (err,user) {
         if(err){
@@ -27,7 +27,7 @@ User.prototype.save = function (callback) {
         }
         callback(null,user)
     })
-}
+};
 
 User.getOne = function (name,callback) {
     userModel.findOne({name:name}, function (err,user) {
@@ -36,7 +36,7 @@ User.getOne = function (name,callback) {
         }
         callback(null,user);
     });
-}
+};
 User.getAll = function (obj,callback) {
     var q =obj.search || {};
     //var col = obj.columns;
@@ -67,7 +67,7 @@ User.getAll = function (obj,callback) {
     //    callback(null,users)
     //
     //})
-}
+};
 
 User.search = function (query,callback) {
     userModel.findOne(query, function (err,users) {
@@ -76,7 +76,7 @@ User.search = function (query,callback) {
         }
         callback(null,users);
     })
-}
+};
 User.update = function (name,password,callback) {
     userModel.update({name:name},
         { $set: { password:password}},
@@ -86,7 +86,7 @@ User.update = function (name,password,callback) {
             }
         callback(null,user)
     });
-}
+};
 
 User.remove= function (name,callback) {
     userModel.remove({name:name}, function (err,user) {
@@ -95,7 +95,7 @@ User.remove= function (name,callback) {
         }
         callback(null,user);
     });
-}
+};
 
 
 module.exports = User;

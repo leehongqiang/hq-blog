@@ -1,6 +1,3 @@
-/**
- * Created by Administrator on 2016/6/2.
- */
 var mongoose = require('./db');
 
 var caseSchema = new mongoose.Schema({
@@ -74,7 +71,7 @@ Products.remove = function (id,callback) {
         }
         callback(null);
     })
-}
+};
 
 Products.getProduct = function (callback) {
     productsModel.find({}, function (err,products) {
@@ -83,4 +80,4 @@ Products.getProduct = function (callback) {
         }
         callback(null,products);
     })
-}
+};
