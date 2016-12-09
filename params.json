@@ -1,0 +1,6 @@
+{
+  "name": "Hq-blog",
+  "tagline": "个人博客",
+  "body": "# hq-blog\r\n个人博客\r\n\r\n本项目是基于node 和express开发的个人博客系统\r\n![image](https://github.com/leehongqiang/hq-blog/blob/master/public/images/admin.jpg)\r\n![image](https://github.com/leehongqiang/hq-blog/blob/master/public/images/post.jpg)\r\n# 环境：\r\n\r\nnode: v0.10+\r\n\r\nexpress:4+\r\n\r\n数据库：mongodb 2.6.12\r\n\r\n# 安装\r\nclone 项目\r\n\r\n安装依赖：npm install\r\n\r\n进入项目bin目录运行 node www\r\n\r\n后台访问：http://localhost:3000/server \r\n\r\n前台访问：http://localhost:3000/ \r\n\r\n上线地址：http://www.sccdkj.com:3000/\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
